@@ -36,11 +36,13 @@ div#container {
   background-color: #f8f6f4;
   height: 50%;
   width: 60%;
-  padding: 0.25rem;
   max-width: 960px;
   display: flex;
-  border-top: 6rem solid #c4dfdf;
-  border-radius: 2rem;
+  border: 1rem solid #c4dfdf;
+  border-bottom: 6rem solid #c4dfdf;
+  /* border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem; */
+  border-radius: 1rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

@@ -32,7 +32,7 @@ changeGridSizeButton.addEventListener('click', () => {
     containerDiv.replaceChildren();
     generateSquareGrid(gridSize);
     setPixelDivsEventListener();
-    styleCornerPixelDivs();
+    // styleCornerPixelDivs();
   }
 });
 
@@ -76,5 +76,5 @@ function styleCornerPixelDivs() {
 }
 
 generateSquareGrid(gridSize);
-styleCornerPixelDivs();
+// styleCornerPixelDivs();
 setPixelDivsEventListener();
