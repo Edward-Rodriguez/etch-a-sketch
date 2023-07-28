@@ -1,9 +1,45 @@
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+div#page-container {
+  display: flex;
+  height: 100%;
+  border: 3px dotted pink;
+  justify-content: center;
+}
+
+div#container {
+  max-height: 50%;
+  width: 60%;
+  border: 3px dotted green;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+div#container > div:hover {
+  background-color: black;
+}
+
+.border {
+  /* border: 1px solid red; */
+}
+
+.on-hover {
+  background-color: black;
 }
