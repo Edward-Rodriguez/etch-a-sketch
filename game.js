@@ -1,6 +1,7 @@
 const containerDiv = document.querySelector('#container');
+let gridSize = 32;
 
-function generateSquareGrid(n = 16) {
+function generateSquareGrid(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
       const pixelDiv = document.createElement('div');
@@ -31,6 +32,7 @@ changeGridSizeButton.addEventListener('click', () => {
     containerDiv.replaceChildren();
     generateSquareGrid(gridSize);
     setPixelDivsEventListener();
+    styleCornerPixelDivs();
   }
 });
 
@@ -60,5 +62,19 @@ function isNull(input) {
   else return false;
 }
 
-generateSquareGrid();
+function styleCornerPixelDivs() {
+  let n = gridSize;
+  const leftChildNum = n * n - (n - 1);
+  const leftBottomPixelDiv = document.querySelector(
+    `#container :nth-child(${leftChildNum})`
+  );
+  leftBottomPixelDiv.classList.add('left-corner-pixel');
+  const rightBottomPixelDiv = document.querySelector(
+    `#container :nth-child(${n * n})`
+  );
+  rightBottomPixelDiv.classList.add('right-corner-pixel');
+}
+
+generateSquareGrid(gridSize);
+styleCornerPixelDivs();
 setPixelDivsEventListener();

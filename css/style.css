@@ -19,28 +19,40 @@ div#page-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 3px dotted pink;
   align-items: center;
 }
 
 div#container {
-  height: 50%;
-  width: 60%;
-  border: 3px dotted green;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
 }
 
-div#container > div:hover {
-  background-color: black;
-}
-
-.border {
-  /* border: 1px solid red; */
+#frame {
+  position: relative;
+  box-sizing: content-box;
+  background-color: #f8f6f4;
+  height: 50%;
+  width: 60%;
+  padding: 0.25rem;
+  max-width: 960px;
+  display: flex;
+  border-top: 6rem solid #c4dfdf;
+  border-radius: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .hovered {
   background-color: black;
+}
+
+.left-corner-pixel {
+  border-bottom-left-radius: 2rem;
+}
+
+.right-corner-pixel {
+  border-bottom-right-radius: 2rem;
 }
