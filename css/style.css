@@ -33,18 +33,23 @@ div#container {
 #frame {
   position: relative;
   box-sizing: content-box;
-  background-color: #f8f6f4;
+  /* background-color: #f8f6f4; */
   height: 50%;
   width: 60%;
   max-width: 960px;
   display: flex;
-  border: 1rem solid #c4dfdf;
-  border-bottom: 6rem solid #c4dfdf;
+  border: 0.5rem solid #c4dfdf;
+  /* border-bottom: 6rem solid #c4dfdf; */
   /* border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem; */
   border-radius: 1rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.pixel-div {
+  box-sizing: border-box;
+  border: 0.5px solid rgba(248, 246, 244, 0.6);
 }
 
 .hovered {
