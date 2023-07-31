@@ -49,7 +49,13 @@ changeGridSizeButton.addEventListener('click', () => {
 
 const rgbButton = document.querySelector('#rgb-btn');
 rgbButton.addEventListener('click', () => {
-  rgbIsActive ? (rgbIsActive = false) : (rgbIsActive = true);
+  if (rgbIsActive) {
+    rgbIsActive = false;
+    rgbButton.classList.remove('active');
+  } else {
+    rgbIsActive = true;
+    rgbButton.classList.add('active');
+  }
 });
 
 const clearButton = document.querySelector('#clr-btn');

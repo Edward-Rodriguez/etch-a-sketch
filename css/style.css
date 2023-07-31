@@ -95,7 +95,7 @@ span.rgb {
 }
 
 #menu-bar button:active,
-.active {
+#rgb-btn.active {
   background-color: #d2e9e9;
   box-shadow: none;
   top: 5px;
