@@ -1,11 +1,12 @@
 const containerDiv = document.querySelector('#container');
-let gridSize = 32;
+let gridSize = 16;
 let rgbColor = {
   red: 0,
   green: 0,
   blue: 0,
 };
 let rgbIsActive = false;
+let isPaused = false;
 
 function generateSquareGrid(n) {
   for (let i = 0; i < n; i++) {
@@ -28,7 +29,9 @@ function setPixelDivsEventListener() {
   pixelDivs.forEach((pixelDiv) => {
     pixelDiv.addEventListener('mouseover', () => {
       // pixelDiv.classList.add('hovered');
-      changeBackgroundColor(pixelDiv);
+      if (isPaused)
+        pixelDiv.style.backgroundColor = pixelDiv.style.backgroundColor;
+      else changeBackgroundColor(pixelDiv);
     });
   });
 }
@@ -56,6 +59,11 @@ clearButton.addEventListener('click', () => {
   setPixelDivsEventListener();
 });
 
+// to allow user to 'pause' drawing on click
+containerDiv.addEventListener('click', () => {
+  togglePause();
+});
+
 function getUserInput() {
   let userInput = prompt(
     'Please choose a value for n between 1 and 100, for a grid size (n x n)'
@@ -68,6 +76,10 @@ function getUserInput() {
     }
   }
   return +userInput;
+}
+
+function togglePause() {
+  isPaused ? (isPaused = false) : (isPaused = true);
 }
 
 function isValidInput(input) {
