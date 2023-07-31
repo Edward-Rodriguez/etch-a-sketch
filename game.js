@@ -1,5 +1,11 @@
 const containerDiv = document.querySelector('#container');
 let gridSize = 32;
+let rgbColor = {
+  red: 0,
+  green: 0,
+  blue: 0,
+};
+let rgbIsActive = false;
 
 function generateSquareGrid(n) {
   for (let i = 0; i < n; i++) {
@@ -21,7 +27,8 @@ function setPixelDivsEventListener() {
   const pixelDivs = document.querySelectorAll('#container div');
   pixelDivs.forEach((pixelDiv) => {
     pixelDiv.addEventListener('mouseover', () => {
-      pixelDiv.classList.add('hovered');
+      // pixelDiv.classList.add('hovered');
+      changeBackgroundColor(pixelDiv);
     });
   });
 }
@@ -35,6 +42,18 @@ changeGridSizeButton.addEventListener('click', () => {
     setPixelDivsEventListener();
     // styleCornerPixelDivs();
   }
+});
+
+const rgbButton = document.querySelector('#rgb-btn');
+rgbButton.addEventListener('click', () => {
+  rgbIsActive ? (rgbIsActive = false) : (rgbIsActive = true);
+});
+
+const clearButton = document.querySelector('#clr-btn');
+clearButton.addEventListener('click', () => {
+  containerDiv.replaceChildren();
+  generateSquareGrid(gridSize);
+  setPixelDivsEventListener();
 });
 
 function getUserInput() {
@@ -63,17 +82,23 @@ function isNull(input) {
   else return false;
 }
 
-function styleCornerPixelDivs() {
-  let n = gridSize;
-  const leftChildNum = n * n - (n - 1);
-  const leftBottomPixelDiv = document.querySelector(
-    `#container :nth-child(${leftChildNum})`
-  );
-  leftBottomPixelDiv.classList.add('left-corner-pixel');
-  const rightBottomPixelDiv = document.querySelector(
-    `#container :nth-child(${n * n})`
-  );
-  rightBottomPixelDiv.classList.add('right-corner-pixel');
+function randomizeColor() {
+  rgbColor.red = getRandomInt(255);
+  rgbColor.green = getRandomInt(255);
+  rgbColor.blue = getRandomInt(255);
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max + 1);
+}
+
+function changeBackgroundColor(element) {
+  if (rgbIsActive) {
+    randomizeColor();
+    element.style.backgroundColor = `rgb(${rgbColor.red},${rgbColor.blue},${rgbColor.green})`;
+  } else {
+    element.style.backgroundColor = 'black';
+  }
 }
 
 generateSquareGrid(gridSize);

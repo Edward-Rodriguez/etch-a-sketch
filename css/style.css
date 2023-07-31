@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap');
+
 *,
 *::before,
 *::after {
@@ -22,6 +24,12 @@ div#page-container {
   align-items: center;
 }
 
+h1 {
+  margin: 2rem;
+  font-family: 'Caveat', cursive;
+  font-size: 80px;
+}
+
 div#container {
   width: 100%;
   display: flex;
@@ -38,13 +46,60 @@ div#container {
   width: 60%;
   max-width: 960px;
   display: flex;
-  border: 0.5rem solid #c4dfdf;
-  /* border-bottom: 6rem solid #c4dfdf; */
-  /* border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem; */
-  border-radius: 1rem;
+  border: 0.25rem solid #c4dfdf;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#menu-bar {
+  width: 60%;
+  max-width: 960px;
+  display: flex;
+  box-sizing: content-box;
+  background-color: #c4dfdf;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+  border: 0.25rem solid #c4dfdf;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#menu-bar button {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8f6f4;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+span.rgb {
+  font-weight: 600;
+  background: linear-gradient(to left, #40e0d0, #ff8c00, #ff0080);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#menu-bar button:active,
+.active {
+  background-color: #d2e9e9;
+  box-shadow: none;
+  top: 5px;
+  left: 5px;
 }
 
 .pixel-div {
