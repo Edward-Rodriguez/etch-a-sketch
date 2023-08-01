@@ -1,4 +1,3 @@
-const containerDiv = document.querySelector('#container');
 let gridSize = 16;
 let rgbColor = {
   red: 0,
@@ -8,6 +7,7 @@ let rgbColor = {
 let rgbIsActive = false;
 let isPaused = false;
 
+const containerDiv = document.querySelector('#container');
 function generateSquareGrid(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
