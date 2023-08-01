@@ -41,7 +41,6 @@ div#container {
 #frame {
   position: relative;
   box-sizing: content-box;
-  /* background-color: #f8f6f4; */
   height: 50%;
   width: 60%;
   max-width: 960px;
@@ -89,7 +88,7 @@ div#container {
 span.rgb {
   font-weight: 600;
   background: linear-gradient(to left, #40e0d0, #ff8c00, #ff0080);
-
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -104,17 +103,6 @@ span.rgb {
 
 .pixel-div {
   box-sizing: border-box;
-  border: 0.5px solid rgba(248, 246, 244, 0.6);
-}
-
-.hovered {
-  background-color: black;
-}
-
-.left-corner-pixel {
-  border-bottom-left-radius: 2rem;
-}
-
-.right-corner-pixel {
-  border-bottom-right-radius: 2rem;
+  border: 1px solid rgba(248, 246, 244, 0.8);
+  --original-background-color: none;
 }

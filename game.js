@@ -28,10 +28,12 @@ function setPixelDivsEventListener() {
   const pixelDivs = document.querySelectorAll('#container div');
   pixelDivs.forEach((pixelDiv) => {
     pixelDiv.addEventListener('mouseover', () => {
-      // pixelDiv.classList.add('hovered');
       if (isPaused)
         pixelDiv.style.backgroundColor = pixelDiv.style.backgroundColor;
-      else changeBackgroundColor(pixelDiv);
+      else {
+        changeBackgroundColor(pixelDiv);
+        // pixelDiv.setAttribute('data-');
+      }
     });
   });
 }
@@ -112,13 +114,43 @@ function getRandomInt(max) {
 
 function changeBackgroundColor(element) {
   if (rgbIsActive) {
-    randomizeColor();
-    element.style.backgroundColor = `rgb(${rgbColor.red},${rgbColor.blue},${rgbColor.green})`;
+    if (element.style.backgroundColor != '') {
+      darkenColor(element);
+    } else {
+      randomizeColor();
+      // set custom property to store original rgb values (later used to calculate darkening)
+      element.style.setProperty(
+        '--original-background-color',
+        `rgb(${rgbColor.red},${rgbColor.green},${rgbColor.blue})`
+      );
+    }
+    element.style.backgroundColor = `rgb(${rgbColor.red},${rgbColor.green},${rgbColor.blue})`;
   } else {
     element.style.backgroundColor = 'black';
   }
 }
 
+function darkenColor(element) {
+  const currentBackgroundColor = element.style.backgroundColor;
+  const currentBackgroundColorArray = currentBackgroundColor.match(/\d+/g);
+  const originalBackgroungColor = element.style
+    .getPropertyValue('--original-background-color')
+    .match(/\d+/g);
+
+  const updatedRedColor =
+    currentBackgroundColorArray[0] -
+    Math.floor(+originalBackgroungColor[0] * 0.1);
+  const updatedGreenColor =
+    currentBackgroundColorArray[1] -
+    Math.floor(+originalBackgroungColor[1] * 0.1);
+  const updatedBlueColor =
+    currentBackgroundColorArray[2] -
+    Math.floor(+originalBackgroungColor[2] * 0.1);
+
+  rgbColor.red = updatedRedColor < 0 ? 0 : updatedRedColor;
+  rgbColor.green = updatedGreenColor < 0 ? 0 : updatedGreenColor;
+  rgbColor.blue = updatedBlueColor < 0 ? 0 : updatedBlueColor;
+}
+
 generateSquareGrid(gridSize);
-// styleCornerPixelDivs();
 setPixelDivsEventListener();
