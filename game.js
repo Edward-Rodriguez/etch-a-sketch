@@ -114,7 +114,10 @@ function getRandomInt(max) {
 
 function changeBackgroundColor(element) {
   if (rgbIsActive) {
-    if (element.style.backgroundColor === '') {
+    if (
+      element.style.backgroundColor === '' ||
+      element.style.backgroundColor === 'rgb(0, 0, 0)'
+    ) {
       randomizeColor();
       setOriginalBackgroundProperty(element);
     } else {

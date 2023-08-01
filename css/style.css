@@ -103,6 +103,6 @@ span.rgb {
 
 .pixel-div {
   box-sizing: border-box;
-  border: 1px solid rgba(248, 246, 244, 0.8);
+  border: 1px solid rgba(248, 246, 244, 0.2);
   --original-background-color: none;
 }
