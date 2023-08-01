@@ -114,20 +114,25 @@ function getRandomInt(max) {
 
 function changeBackgroundColor(element) {
   if (rgbIsActive) {
-    if (element.style.backgroundColor != '') {
-      darkenColor(element);
-    } else {
+    if (element.style.backgroundColor === '') {
       randomizeColor();
-      // set custom property to store original rgb values (later used to calculate darkening)
-      element.style.setProperty(
-        '--original-background-color',
-        `rgb(${rgbColor.red},${rgbColor.green},${rgbColor.blue})`
-      );
+      setOriginalBackgroundProperty(element);
+    } else {
+      darkenColor(element);
     }
     element.style.backgroundColor = `rgb(${rgbColor.red},${rgbColor.green},${rgbColor.blue})`;
   } else {
-    element.style.backgroundColor = 'black';
+    element.style.backgroundColor = 'rgb(0, 0, 0)';
+    setOriginalBackgroundProperty(element);
   }
+}
+
+// set custom property to store original rgb values (later used to calculate darkening)
+function setOriginalBackgroundProperty(element) {
+  element.style.setProperty(
+    '--original-background-color',
+    `rgb(${rgbColor.red},${rgbColor.green},${rgbColor.blue})`
+  );
 }
 
 function darkenColor(element) {
