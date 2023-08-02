@@ -38,15 +38,10 @@ function setPixelDivsEventListener() {
   });
 }
 
+const gridChangeModal = document.querySelector('#gridChange-modal');
 const changeGridSizeButton = document.querySelector('#grid-size-btn');
 changeGridSizeButton.addEventListener('click', () => {
-  gridSize = getUserInput();
-  if (gridSize > 0) {
-    containerDiv.replaceChildren();
-    generateSquareGrid(gridSize);
-    setPixelDivsEventListener();
-    // styleCornerPixelDivs();
-  }
+  gridChangeModal.style.display = 'flex';
 });
 
 const rgbButton = document.querySelector('#rgb-btn');
@@ -158,6 +153,26 @@ function darkenColor(element) {
   rgbColor.red = updatedRedColor < 0 ? 0 : updatedRedColor;
   rgbColor.green = updatedGreenColor < 0 ? 0 : updatedGreenColor;
   rgbColor.blue = updatedBlueColor < 0 ? 0 : updatedBlueColor;
+}
+
+const slider = document.querySelector('#gridRange');
+slider.addEventListener('input', (event) => {
+  document.querySelector('#rangeValue').textContent = event.target.value;
+  slider.setAttribute('value', event.target.value);
+});
+
+const applyButton = document.querySelector('#apply-btn');
+applyButton.addEventListener('click', handleApplyClick);
+
+function handleApplyClick() {
+  let newGridSize = slider.getAttribute('value');
+  if (newGridSize !== gridSize) {
+    gridSize = newGridSize;
+    containerDiv.replaceChildren();
+    generateSquareGrid(gridSize);
+    setPixelDivsEventListener();
+  }
+  gridChangeModal.style.display = 'none';
 }
 
 generateSquareGrid(gridSize);
