@@ -175,5 +175,10 @@ function handleApplyClick() {
   gridChangeModal.style.display = 'none';
 }
 
+const cancelButton = document.querySelector('#cancel-btn');
+cancelButton.addEventListener('click', () => {
+  gridChangeModal.style.display = 'none';
+});
+
 generateSquareGrid(gridSize);
 setPixelDivsEventListener();
