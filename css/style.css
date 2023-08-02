@@ -198,8 +198,17 @@ span.rgb {
 }
 
 #footer {
-  justify-content: flex-end;
-  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
   width: 100%;
+  color: rgb(229, 231, 235);
   background-color: black;
+  font-size: 12px;
+  gap: 1rem;
+}
+
+#footer img {
+  max-height: 1.5rem;
 }
