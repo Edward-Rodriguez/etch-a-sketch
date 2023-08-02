@@ -30,10 +30,7 @@ function setPixelDivsEventListener() {
     pixelDiv.addEventListener('mouseover', () => {
       if (isPaused)
         pixelDiv.style.backgroundColor = pixelDiv.style.backgroundColor;
-      else {
-        changeBackgroundColor(pixelDiv);
-        // pixelDiv.setAttribute('data-');
-      }
+      else changeBackgroundColor(pixelDiv);
     });
   });
 }
@@ -67,29 +64,8 @@ containerDiv.addEventListener('click', () => {
   togglePause();
 });
 
-function getUserInput() {
-  let userInput = prompt(
-    'Please choose a value for n between 1 and 100, for a grid size (n x n)'
-  );
-  if (isNull(userInput)) return -1;
-  else if (isValidInput(userInput)) return +userInput;
-  else {
-    while (!isValidInput(userInput)) {
-      userInput = prompt('Enter a valid value between 1 and 100');
-    }
-  }
-  return +userInput;
-}
-
 function togglePause() {
   isPaused ? (isPaused = false) : (isPaused = true);
-}
-
-function isValidInput(input) {
-  if (isNull(input)) return true;
-  input = parseInt(input);
-  if (isNaN(input) || !(input >= 1 && input <= 100)) return false;
-  else return true;
 }
 
 function isNull(input) {
@@ -125,7 +101,7 @@ function changeBackgroundColor(element) {
   }
 }
 
-// set custom property to store original rgb values (later used to calculate darkening)
+// set custom css property to store original rgb values (later used to calculate darkening)
 function setOriginalBackgroundProperty(element) {
   element.style.setProperty(
     '--original-background-color',
